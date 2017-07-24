@@ -43,8 +43,7 @@ filetype plugin indent on
 " autoload when vimrc modifed
 autocmd! bufwritepost .vimrc source %
 
-" F2 行号开关，用于鼠标复制代码用
-" " 为方便复制，用<F2>开启/关闭行号显示:
+" F2 for hidden number when copy code
 function! HideNumber()
     if(&relativenumber == &number)
         set number!

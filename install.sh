@@ -1,4 +1,4 @@
-CUR_DIR=${pwd}
+CUR_DIR=$(pwd)
 echo "setup 1: download vim plug package manager: vim-plug"
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
