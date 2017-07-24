@@ -1,0 +1,18 @@
+if !exists('g:bundle_groups')
+    let g:bundle_groups=['python', 'tmux',  'json', 'golang', 'shell']
+endif
+    
+call plug#begin('~/.vim/bundle')
+Plug 'Valloric/YouCompleteMe'
+Plug 'wgqimut/LeaderF'
+Plug 'jsfaint/gen_tags.vim'
+Plug 'scrooloose/nerdcommenter' " quick comment
+
+Plug 'mileszs/ack.vim'
+if executable('ag')
+    let g:ackprg = 'ag --nogroup --nocolor --column'
+endif
+let g:ackhighlight = 1
+map <C-S-f> :Ack<space>
+
+call plug#end()
