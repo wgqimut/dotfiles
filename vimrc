@@ -12,6 +12,8 @@ set showmatch
 set hlsearch
 set incsearch
 set autoindent
+set wildmode=list:longest
+set wildmenu
 
 "about tab
 set tabstop=4

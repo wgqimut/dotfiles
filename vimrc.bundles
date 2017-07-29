@@ -26,6 +26,6 @@ if executable('ag')
     let g:ackprg = 'ag --nogroup --nocolor --column'
 endif
 let g:ackhighlight = 1
-map <C-S-f> :Ack<space>
+nmap <leader>gf :Ack<space>
 
 call plug#end()
