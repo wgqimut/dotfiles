@@ -28,4 +28,8 @@ endif
 let g:ackhighlight = 1
 nmap <leader>gf :Ack<space>
 
+"status line display
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
 call plug#end()
