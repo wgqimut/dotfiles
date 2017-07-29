@@ -1,7 +1,7 @@
 " modify the leader key
 let mapleader = ','
 let g:mapleader = ','
-set csprg=gtags-cscope " set cscope as the gtags client
+"set csprg=gtags-cscope " set cscope as the gtags client
 
 syntax on
 set noswapfile
@@ -43,7 +43,7 @@ filetype plugin indent on
 " autoload when vimrc modifed
 autocmd! bufwritepost .vimrc source %
 
-" F2 for hidden number when copy code
+" F2 for hidden line number when copy code
 function! HideNumber()
     if(&relativenumber == &number)
         set number!
