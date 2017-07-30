@@ -1,16 +1,14 @@
-CUR_DIR=$(pwd)
 echo "setup 1: download vim plug package manager: vim-plug"
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-echo "setup 3: update/install vim plugins"
+echo "setup 2: update/install vim plugins"
 vim -u $HOME/.vimrc.bundles +PlugInstall! +PlugClean! +qall
 
-echo "setup4: compile the YouCompleteMe"
-cd $CUR_DIR/bundle/YouCompleteMe/ && python install.py --clang-completer"
-cd $CUR_DIR/bundle/YouCompleteMe/
+echo "setup 3: compile the YouCompleteMe"
+cd $HOME/.vim/bundle/YouCompleteMe/
 git submodule update --init --recursive
-if [ `which clang` ]; then   # check system clang
+if [ $(which clang) ]; then   # check system clang
     python install.py --clang-completer --system-libclang   # use system clang
 else
     python install.py --clang-completer
