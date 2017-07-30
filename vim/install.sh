@@ -3,10 +3,6 @@ echo "setup 1: download vim plug package manager: vim-plug"
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-echo "setup 2: setup the configuration file"
-lnif $CUR_DIR/vimrc $HOME/.vimrc
-lnif $CUR_DIR/vimrc.bundles $HOME/.vimrc.bundles
-
 echo "setup 3: update/install vim plugins"
 vim -u $HOME/.vimrc.bundles +PlugInstall! +PlugClean! +qall
 
