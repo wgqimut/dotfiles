@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/ilbsmart/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -83,38 +83,44 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-if [[ $(uname) == 'Darwin' ]]; then
+platform=$(uname)
+if [[ $platform == 'Darwin' ]]; then
     alias vim="$(brew --cellar vim)/*/bin/vim"
+    PATH=$PATH:/usr/local/go/bin
+    export PATH
+    export GOPATH=$HOME/Workspace/go_work
+    export GOROOT=/usr/local/Cellar/go/1.8.1/libexec
+    #export http_proxy=http://192.168.0.17:1080
+    ##export https_proxy=http://192.168.0.17:1080
+    export http_proxy=http://127.0.0.1:1087
+    export https_proxy=http://127.0.0.1:1087
+    #
+    export WORKON_HOME=~/workspace/PythonVirEnvs
+    source /Users/ilbsmart/Library/Python/2.7/bin/virtualenvwrapper.sh
+    #
+    #pyenv set
+    export PYENV_ROOT=/usr/local/var/pyenv
+    eval "$(pyenv init -)"
+    #pyenv set end
+elif [[ $platform == 'Linux' ]]; then
+    alias zshconfig="vi ~/.zshrc"
+    export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=7'
+    all_proxy=127.0.0.1:1086/
+    ALL_PROXY=127.0.0.1:1086/
+
+    export WORKON_HOME=$HOME/workspace/envs/python/
+    source /usr/local/bin/virtualenvwrapper.sh
 fi
 alias vi='vim'
 alias cls='clear'
 alias ll='ls -l'
 alias la='ls -a'
 alias grep="grep --color=auto"
-alias -s html=mate   # 在命令行直接输入后缀为 html 的文件名，会在 TextMate 中打开
-alias -s rb=mate     # 在命令行直接输入 ruby 文件，会在 TextMate 中打开
 alias -s gz='tar -xzvf'
 alias -s tgz='tar -xzvf'
 alias -s zip='unzip'
 alias -s bz2='tar -xjvf'
 alias 'git log'='git log --pretty=oneline'
-alias subl="'/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl'"
-alias nano="subl"
-export EDITOR="subl"
 
-PATH=$PATH:/usr/local/go/bin
-export PATH
-export GOPATH=$HOME/Workspace/go_work
-export GOROOT=/usr/local/Cellar/go/1.8.1/libexec
-#export http_proxy=http://192.168.0.17:1080
-##export https_proxy=http://192.168.0.17:1080
-export http_proxy=http://127.0.0.1:1087
-export https_proxy=http://127.0.0.1:1087
-#
-export WORKON_HOME=~/workspace/PythonVirEnvs
-source /Users/ilbsmart/Library/Python/2.7/bin/virtualenvwrapper.sh
-#
-#pyenv set
-export PYENV_ROOT=/usr/local/var/pyenv
-eval "$(pyenv init -)"
-#pyenv set end
+
+
