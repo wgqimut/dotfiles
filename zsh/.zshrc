@@ -83,6 +83,8 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# Checks if there's a frame open
 platform=$(uname)
 if [[ $platform == 'Darwin' ]]; then
     alias vim="$(brew --cellar vim)/*/bin/vim"
@@ -121,6 +123,7 @@ alias -s tgz='tar -xzvf'
 alias -s zip='unzip'
 alias -s bz2='tar -xjvf'
 alias 'git log'='git log --pretty=oneline'
+alias em='emacsclient -c --no-wait'
 
 
 

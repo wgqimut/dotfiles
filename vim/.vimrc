@@ -55,6 +55,7 @@ function! HideNumber()
 	set number?
 endfunc
 nnoremap <F2> :call HideNumber()<CR>
+nnoremap <Leader><space> :noh<cr>
 
 
 "let g:Lf_Ctags = '/usr/local/bin/global'
