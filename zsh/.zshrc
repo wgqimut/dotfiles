@@ -83,19 +83,19 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+#
 
-# Checks if there's a frame open
 platform=$(uname)
 if [[ $platform == 'Darwin' ]]; then
     alias vim="$(brew --cellar vim)/*/bin/vim"
-    PATH=$PATH:/usr/local/go/bin
+    PATH=$PATH:/usr/local/go/bin:$HOME/scripts
     export PATH
     export GOPATH=$HOME/Workspace/go_work
     export GOROOT=/usr/local/Cellar/go/1.8.1/libexec
     #export http_proxy=http://192.168.0.17:1080
     ##export https_proxy=http://192.168.0.17:1080
-    export http_proxy=http://127.0.0.1:1087
-    export https_proxy=http://127.0.0.1:1087
+    all_proxy=127.0.0.1:1086/
+    ALL_PROXY=127.0.0.1:1086/
     #
     export WORKON_HOME=~/workspace/PythonVirEnvs
     source /Users/ilbsmart/Library/Python/2.7/bin/virtualenvwrapper.sh
@@ -127,3 +127,4 @@ alias em='emacsclient -c --no-wait'
 
 
 
+export PATH="/usr/local/sbin:$PATH"
