@@ -1,6 +1,6 @@
 " modify the leader key
-let mapleader = ','
-let g:mapleader = ','
+let mapleader = "\<Space>"
+let maplocalleader = ","
 "set csprg=gtags-cscope " set cscope as the gtags client
 
 syntax on
@@ -56,6 +56,11 @@ function! HideNumber()
 endfunc
 nnoremap <F2> :call HideNumber()<CR>
 nnoremap <Leader><space> :noh<cr>
+nnoremap <Leader>w :w<CR>
+nnoremap <Leader>s :wq<CR>
+
+" remove trailing whitespaces
+noremap <silent> <Leader><Space> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:w<CR>
 
 
 "let g:Lf_Ctags = '/usr/local/bin/global'
