@@ -85,6 +85,10 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 
+# for emacs
+export ALTERNATE_EDITOR=""
+export EDITOR=emacsclient
+
 platform=$(uname)
 if [[ $platform == 'Darwin' ]]; then
     alias vim="$(brew --cellar vim)/*/bin/vim"
@@ -113,6 +117,7 @@ elif [[ $platform == 'Linux' ]]; then
     export WORKON_HOME=$HOME/workspace/envs/python/
     source /usr/local/bin/virtualenvwrapper.sh
 fi
+
 alias vi='vim'
 alias cls='clear'
 alias ll='ls -l'
