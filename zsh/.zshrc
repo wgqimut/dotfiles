@@ -101,8 +101,8 @@ if [[ $platform == 'Darwin' ]]; then
     all_proxy=127.0.0.1:1086/
     ALL_PROXY=127.0.0.1:1086/
     #
-    export WORKON_HOME=~/workspace/PythonVirEnvs
-    source /Users/ilbsmart/Library/Python/2.7/bin/virtualenvwrapper.sh
+    #export WORKON_HOME=~/workspace/PythonVirEnvs
+    #source /Users/ilbsmart/Library/Python/2.7/bin/virtualenvwrapper.sh
     #
     #pyenv set
     export PYENV_ROOT=/usr/local/var/pyenv
@@ -114,8 +114,8 @@ elif [[ $platform == 'Linux' ]]; then
     all_proxy=127.0.0.1:1086/
     ALL_PROXY=127.0.0.1:1086/
 
-    export WORKON_HOME=$HOME/workspace/envs/python/
-    source /usr/local/bin/virtualenvwrapper.sh
+    #export WORKON_HOME=$HOME/workspace/envs/python/
+    #source /usr/local/bin/virtualenvwrapper.sh
 fi
 
 alias vi='vim'
@@ -129,7 +129,8 @@ alias -s zip='unzip'
 alias -s bz2='tar -xjvf'
 alias 'git log'='git log --pretty=oneline'
 alias emt='emacsclient -t'
+alias scpr='rsync -azvP --bwlimit=60'
 
 
+eval "$(direnv hook zsh)"
 
-export PATH="/usr/local/sbin:$PATH"

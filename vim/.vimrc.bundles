@@ -1,3 +1,5 @@
+let $GTAGSLABEL = 'native-pygments'
+let $GTAGSCONF = ''
 if !exists('g:bundle_groups')
     let g:bundle_groups=['python', 'tmux',  'json', 'golang', 'shell']
 endif
