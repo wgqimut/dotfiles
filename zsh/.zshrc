@@ -104,10 +104,6 @@ if [[ $platform == 'Darwin' ]]; then
     #export WORKON_HOME=~/workspace/PythonVirEnvs
     #source /Users/ilbsmart/Library/Python/2.7/bin/virtualenvwrapper.sh
     #
-    #pyenv set
-    export PYENV_ROOT=/usr/local/var/pyenv
-    eval "$(pyenv init -)"
-    #pyenv set end
 elif [[ $platform == 'Linux' ]]; then
     alias zshconfig="vi ~/.zshrc"
     export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=7'
@@ -134,3 +130,8 @@ alias scpr='rsync -azvP --bwlimit=60'
 
 eval "$(direnv hook zsh)"
 
+# config pyenv
+if command -v pyenv 1>/dev/null 2>&1; then
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+fi
