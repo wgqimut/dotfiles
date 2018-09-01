@@ -2,6 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
+#zmodload zsh/zprof
 export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
@@ -51,7 +52,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions docker)
+plugins=(git zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -89,17 +90,14 @@ source $ZSH/oh-my-zsh.sh
 export ALTERNATE_EDITOR=""
 export EDITOR=emacsclient
 
+# for proxy
+export all_proxy=127.0.0.1:1086/
+export ALL_PROXY=127.0.0.1:1086/
+
 platform=$(uname)
 if [[ $platform == 'Darwin' ]]; then
     alias vim="$(brew --cellar vim)/*/bin/vim"
-    PATH=$PATH:/usr/local/go/bin:$HOME/scripts
-    export PATH
-    export GOPATH=$HOME/Workspace/go_work
-    export GOROOT=/usr/local/Cellar/go/1.8.1/libexec
-    #export http_proxy=http://192.168.0.17:1080
-    ##export https_proxy=http://192.168.0.17:1080
-    all_proxy=127.0.0.1:1086/
-    ALL_PROXY=127.0.0.1:1086/
+    alias typora="open -a typora"
     #
     #export WORKON_HOME=~/workspace/PythonVirEnvs
     #source /Users/ilbsmart/Library/Python/2.7/bin/virtualenvwrapper.sh
@@ -107,8 +105,6 @@ if [[ $platform == 'Darwin' ]]; then
 elif [[ $platform == 'Linux' ]]; then
     alias zshconfig="vi ~/.zshrc"
     export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=7'
-    all_proxy=127.0.0.1:1086/
-    ALL_PROXY=127.0.0.1:1086/
 
     #export WORKON_HOME=$HOME/workspace/envs/python/
     #source /usr/local/bin/virtualenvwrapper.sh
