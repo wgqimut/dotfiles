@@ -86,14 +86,6 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 
-# for emacs
-export ALTERNATE_EDITOR=""
-export EDITOR=emacsclient
-
-# for proxy
-export all_proxy=127.0.0.1:1086/
-export ALL_PROXY=127.0.0.1:1086/
-
 platform=$(uname)
 if [[ $platform == 'Darwin' ]]; then
     alias vim="$(brew --cellar vim)/*/bin/vim"
@@ -109,6 +101,9 @@ elif [[ $platform == 'Linux' ]]; then
     #export WORKON_HOME=$HOME/workspace/envs/python/
     #source /usr/local/bin/virtualenvwrapper.sh
 fi
+
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 
 alias vi='vim'
 alias cls='clear'
@@ -126,7 +121,7 @@ alias scpr='rsync -azvP --bwlimit=60'
 
 eval "$(direnv hook zsh)"
 
-# config pyenv
+#config pyenv
 if command -v pyenv 1>/dev/null 2>&1; then
     eval "$(pyenv init -)"
     eval "$(pyenv virtualenv-init -)"
