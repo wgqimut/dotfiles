@@ -102,9 +102,6 @@ elif [[ $platform == 'Linux' ]]; then
     #source /usr/local/bin/virtualenvwrapper.sh
 fi
 
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-
 alias vi='vim'
 alias cls='clear'
 alias ll='ls -l'
