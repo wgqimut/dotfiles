@@ -13,13 +13,15 @@ if [[ $OS == 'Darwin' ]]; then
     # but /etc/zprofile is be exected when shell is a login, so when we a login shell, we should't set PATH in this file (.zshenv)
     # we should set PATH in ${HOME}/.zprofile (this file is be exected when shell is a login file)
     if [[ ! -o login ]]; then
-        set_path    
+        set_path
     fi
 
     # for new brew openssl curl
     export LDFLAGS="-L/usr/local/opt/curl/lib"
     export CPPFLAGS="-I/usr/local/opt/curl/include"
     export PKG_CONFIG_PATH="/usr/local/opt/curl/lib/pkgconfig"
+else
+    set_path
  fi
 
  # for emacs
@@ -27,5 +29,5 @@ if [[ $OS == 'Darwin' ]]; then
  export EDITOR=emacsclient
 
  # for proxy
- export all_proxy=127.0.0.1:1086/
- export ALL_PROXY=127.0.0.1:1086/
+# export all_proxy=127.0.0.1:1086/
+# export ALL_PROXY=127.0.0.1:1086/

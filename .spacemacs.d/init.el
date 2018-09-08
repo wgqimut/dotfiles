@@ -289,7 +289,7 @@ values."
    dotspacemacs-highlight-delimiters 'all
    ;; If non nil, advise quit functions to keep server open when quitting.
    ;; (default nil)
-   dotspacemacs-persistent-server nil
+   dotspacemacs-persistent-server t
    ;; List of search tool executable names. Spacemacs uses the first installed
    ;; tool of the list. Supported tools are `ag', `pt', `ack' and `grep'.
    ;; (default '("ag" "pt" "ack" "grep"))
@@ -353,6 +353,7 @@ you should place your code here."
   (spacemacs/set-leader-keys "pn" 'ggtags-find-tag-regexp)
   (spacemacs/set-leader-keys-for-major-mode 'c-mode "gn" 'ggtags-find-tag-regexp)
   (spacemacs/set-leader-keys "gd" 'magit-diff-buffer-file)
+  (spacemacs/set-leader-keys "qq" 'spacemacs/frame-killer)
 
   ;; performance for large files
   (setq projectile-enable-caching t)

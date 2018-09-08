@@ -114,12 +114,14 @@ alias -s bz2='tar -xjvf'
 alias 'git log'='git log --pretty=oneline'
 alias emt='emacsclient -t'
 alias scpr='rsync -azvP --bwlimit=60'
-
+alias pxc='PYTHON_CONFIGURE_OPTS="--disable-ipv6" proxychains4'
+alias emaclient='emacsclient -c -a ""'
 
 eval "$(direnv hook zsh)"
 
 #config pyenv
 if command -v pyenv 1>/dev/null 2>&1; then
     eval "$(pyenv init -)"
-    eval "$(pyenv virtualenv-init -)"
+    #eval "$(pyenv virtualenv-init -)"
+    alias pyenv='CFLAGS="-I$(brew --prefix openssl)/include" LDFLAGS="-L$(brew --prefix openssl)/lib" pyenv'
 fi
