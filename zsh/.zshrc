@@ -97,6 +97,7 @@ if [[ $platform == 'Darwin' ]]; then
 elif [[ $platform == 'Linux' ]]; then
     alias zshconfig="vi ~/.zshrc"
     export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=7'
+    export LD_PRELOAD=/usr/local/lib64/libstdc++.so.6.0.24
 
     #export WORKON_HOME=$HOME/workspace/envs/python/
     #source /usr/local/bin/virtualenvwrapper.sh

@@ -33,13 +33,13 @@ values."
    '(
      python
      shell-scripts
+     helm
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      yaml
-     helm
      ;; better-defaults
      emacs-lisp
      ;; markdown
@@ -50,9 +50,12 @@ values."
      spell-checking
      git
      version-control
-
-     (c-c++ :variables c-c++-enable-clang-support t)
-     gtags
+     lsp
+     (c-c++ :variables
+	     c-c++-backend 'lsp-ccls
+	     c-c++-lsp-executable (file-truename "~/bin/ccls")
+	     c-c++-lsp-sem-highlight-rainbow t
+	     ccls-extra-args '("--log-file=/tmp/aa.log"))
      ;; for ycmd configure, ycmd need auto-completion and syntax-checking
      syntax-checking
      auto-completion
@@ -315,7 +318,8 @@ before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
 
   ;; this configuration must be the first one.
-  (setq configuration-layer--elpa-archives
+  ;;(setq configuration-layer--elpa-archives
+  (setq configuration-layer-elpa-archives
 	'(("melpa-cn" . "http://elpa.emacs-china.org/melpa/")
 	  ("org-cn"   . "http://elpa.emacs-china.org/org/")
 	  ("gnu-cn"   . "http://elpa.emacs-china.org/gnu/")))
@@ -346,12 +350,12 @@ you should place your code here."
   (setq-default indent-tabs-mode t)
 
   ;; keybinding
-  (define-key spacemacs-c-mode-map (kbd "gr") nil)
-  (spacemacs/set-leader-keys-for-major-mode 'c-mode "gr" 'ggtags-find-reference)
-  (define-key spacemacs-c-mode-map (kbd "gd") nil)
-  (spacemacs/set-leader-keys-for-major-mode 'c-mode "gd" 'ggtags-find-definition)
-  (spacemacs/set-leader-keys "pn" 'ggtags-find-tag-regexp)
-  (spacemacs/set-leader-keys-for-major-mode 'c-mode "gn" 'ggtags-find-tag-regexp)
+  ;; (define-key spacemacs-c-mode-map (kbd "gr") nil)
+  ;; (spacemacs/set-leader-keys-for-major-mode 'c-mode "gr" 'ggtags-find-reference)
+  ;; (define-key spacemacs-c-mode-map (kbd "gd") nil)
+  ;; (spacemacs/set-leader-keys-for-major-mode 'c-mode "gd" 'ggtags-find-definition)
+  ;; (spacemacs/set-leader-keys "pn" 'ggtags-find-tag-regexp)
+  ;; (spacemacs/set-leader-keys-for-major-mode 'c-mode "gn" 'ggtags-find-tag-regexp)
   (spacemacs/set-leader-keys "gd" 'magit-diff-buffer-file)
   (spacemacs/set-leader-keys "qq" 'spacemacs/frame-killer)
 
@@ -366,6 +370,11 @@ you should place your code here."
   (setq org-todo-keywords
 	'((sequence "TODO" "WAIT" "|" "DONE(d)")))
   )
+(defun dotspacemacs/emacs-custom-settings ()
+  "Emacs custom settings.
+This is an auto-generated function, do not modify its content directly, use
+Emacs customize menu instead.
+This function is called at the very end of Spacemacs initialization."
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -373,10 +382,11 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (insert-shebang fish-mode company-shell yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode dash-functional helm-pydoc cython-mode company-anaconda anaconda-mode pythonic org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download htmlize gnuplot yaml-mode xterm-color ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline smeargle shell-pop restart-emacs rainbow-delimiters popwin persp-mode pcre2el paradox spinner orgit org-plus-contrib org-bullets open-junk-file neotree multi-term move-text magit-gitflow macrostep lorem-ipsum linum-relative link-hint indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile helm-gtags helm-gitignore request helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter ggtags fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck pkg-info epl flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit magit magit-popup git-commit ghub let-alist with-editor evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight eshell-z eshell-prompt-extras esh-help elisp-slime-nav dumb-jump f dash s disaster diminish diff-hl define-word company-statistics company-c-headers company column-enforce-mode cmake-mode clean-aindent-mode clang-format bind-map bind-key auto-yasnippet yasnippet auto-highlight-symbol auto-dictionary auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core async ac-ispell auto-complete popup))))
+    (yasnippet-snippets yapfify yaml-mode xterm-color ws-butler writeroom-mode visual-fill-column winum volatile-highlights vi-tilde-fringe uuidgen toc-org symon string-inflection spaceline-all-the-icons spaceline powerline smeargle shell-pop restart-emacs rainbow-delimiters pyvenv pytest pyenv-mode py-isort popwin pippel pipenv pip-requirements persp-mode password-generator paradox spinner overseer orgit org-present org-pomodoro alert log4e gntp org-mime org-download org-bullets org-brain open-junk-file neotree nameless multi-term move-text magit-svn magit-gitflow macrostep lsp-ui markdown-mode dash-functional lsp-python lorem-ipsum live-py-mode link-hint insert-shebang indent-guide importmagic epc ctable concurrent deferred hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-xref helm-themes helm-swoop helm-rtags helm-pydoc helm-purpose window-purpose imenu-list helm-projectile helm-org-rifle helm-mode-manager helm-make helm-gitignore request helm-git-grep helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate google-c-style golden-ratio gnuplot gitignore-templates gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter fuzzy flyspell-correct-helm flyspell-correct flycheck-rtags flycheck-pos-tip pos-tip flycheck-bashate flycheck flx-ido flx fish-mode fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-org evil-numbers evil-nerd-commenter evil-matchit evil-magit magit magit-popup git-commit ghub treepy graphql with-editor evil-lisp-state evil-lion evil-indent-plus evil-iedit-state iedit evil-goggles evil-exchange evil-ediff evil-cleverparens smartparens paredit evil-args evil-anzu anzu eval-sexp-fu highlight eshell-z eshell-prompt-extras esh-help elisp-slime-nav editorconfig dumb-jump doom-modeline eldoc-eval shrink-path all-the-icons memoize disaster diff-hl define-word cython-mode cquery counsel-projectile counsel swiper ivy company-statistics company-shell company-rtags rtags company-lsp company-c-headers company-anaconda company column-enforce-mode clean-aindent-mode clang-format centered-cursor-mode ccls projectile lsp-mode pkg-info epl browse-at-remote auto-yasnippet yasnippet auto-highlight-symbol auto-dictionary auto-compile packed anaconda-mode pythonic f dash s aggressive-indent ace-window ace-link ace-jump-helm-line helm avy helm-core ac-ispell auto-complete popup which-key use-package pcre2el org-plus-contrib hydra font-lock+ evil goto-chg undo-tree dotenv-mode diminish bind-map bind-key async))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+)
