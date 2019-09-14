@@ -88,12 +88,28 @@ source $ZSH/oh-my-zsh.sh
 
 platform=$(uname)
 if [[ $platform == 'Darwin' ]]; then
-    alias vim="$(brew --cellar vim)/*/bin/vim"
     alias typora="open -a typora"
     #
     #export WORKON_HOME=~/workspace/PythonVirEnvs
     #source /Users/ilbsmart/Library/Python/2.7/bin/virtualenvwrapper.sh
     #
+    alias git-history="npx git-file-history"
+    # added by Miniconda3 4.5.12 installer
+    # >>> conda init >>>
+    # !! Contents within this block are managed by 'conda init' !!
+    __conda_setup="$(CONDA_REPORT_ERRORS=false '/Users/ilbsmart/app/miniconda3/bin/conda' shell.bash hook 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        \eval "$__conda_setup"
+    else
+        if [ -f "/Users/ilbsmart/app/miniconda3/etc/profile.d/conda.sh" ]; then
+            . "/Users/ilbsmart/app/miniconda3/etc/profile.d/conda.sh"
+            CONDA_CHANGEPS1=false conda activate base
+        else
+            \export PATH="/Users/ilbsmart/app/miniconda3/bin:$PATH"
+        fi
+    fi
+    unset __conda_setup
+    # <<< conda init <<<
 elif [[ $platform == 'Linux' ]]; then
     alias zshconfig="vi ~/.zshrc"
     export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=7'
@@ -125,3 +141,5 @@ if command -v pyenv 1>/dev/null 2>&1; then
     #eval "$(pyenv virtualenv-init -)"
     alias pyenv='CFLAGS="-I$(brew --prefix openssl)/include" LDFLAGS="-L$(brew --prefix openssl)/lib" pyenv'
 fi
+
+
